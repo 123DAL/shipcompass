@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="400" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="100%" height="auto">
   <style>
-    .logo-text { font-family: Arial, sans-serif; font-weight: bold; fill: #14395f; }
-    .tagline { font-family: Arial, sans-serif; fill: #14395f; }
+    .logo-text { font-family: 'Arial Black', 'Arial Bold', Arial, sans-serif; font-weight: bold; fill: #14395f; }
+    .tagline { font-family: Arial, sans-serif; font-weight: 400; fill: #14395f; }
   </style>
   <g>
     <!-- Circle with compass -->
@@ -16,6 +16,6 @@
     <!-- Text -->
     <text x="350" y="180" class="logo-text" font-size="100">SHIP</text>
     <text x="350" y="280" class="logo-text" font-size="100">COMPASS</text>
-    <text x="130" y="360" class="tagline" font-size="50">Your Global Shipping Partner</text>
+    <text x="130" y="360" class="tagline" font-size="50" letter-spacing="1">Your Global Shipping Partner</text>
   </g>
 </svg> 

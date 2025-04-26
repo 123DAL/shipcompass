@@ -3,21 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // Get the form element
   const form = document.getElementById('consultation-form');
   
-  // Add event listener for form submission
-  form.addEventListener('submit', function(event) {
-    // Prevent the default form submission
-    event.preventDefault();
+  // Only add event listener if we're on the homepage with the form
+  if (form) {
+    // Add loading state to form
+    form.addEventListener('submit', function() {
+      const button = this.querySelector('button[type="submit"]');
+      button.innerHTML = 'Sending...';
+      button.disabled = true;
+    });
     
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    // In a real application, you would send this data to a server
-    // Here we'll just show an alert message
-    alert(`Thanks for your inquiry, ${name}! Our team will contact you shortly at ${email}.`);
-    
-    // Reset the form
-    form.reset();
-  });
+    // The form submission is now handled by FormSubmit
+    // No need to prevent default or manually handle form data
+  }
 }); 
