@@ -6,17 +6,7 @@
   <title>Ship Compass | Your Global Shipping Partner</title>
   <meta name="description" content="Ship Compass helps businesses navigate global shipping with smarter, faster, and more reliable logistics strategies.">
   <!-- Cloudflare Turnstile for CAPTCHA -->
-  <script>
-    window.onloadTurnstileCallback = function () {
-      turnstile.render('.cf-turnstile', {
-        sitekey: '0x4AAAAAABUjyJZFsWJY_zNM',
-        callback: function(token) {
-          onTurnstileSuccess(token);
-        },
-      });
-    };
-  </script>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" async defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -344,7 +334,9 @@
               </div>
               
               <!-- Cloudflare Turnstile CAPTCHA -->
-              <div class="cf-turnstile mb-4"></div>
+              <div class="cf-turnstile mb-4" 
+                   data-sitekey="0x4AAAAAABUjyJZFsWJY_zNM" 
+                   data-callback="onTurnstileSuccess"></div>
               
               <button type="submit" id="submit-button" disabled
                     class="w-full bg-brand-navy hover:bg-brand-navy-dark text-white font-bold py-4 px-4 rounded-md transition duration-300 ease-in-out flex items-center justify-center text-lg opacity-70 cursor-not-allowed">
