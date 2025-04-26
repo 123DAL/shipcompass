@@ -188,27 +188,30 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section id="about" class="py-16 bg-gray-50 scroll-section">
-    <div class="container mx-auto px-4 md:px-8">
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-10 md:mb-0 md:pr-12 animate-item">
-          <h2 class="text-3xl md:text-4xl font-bold text-brand-navy mb-6">Guiding Your Freight Forward</h2>
-          <p class="text-lg text-gray-700 mb-6">
-            At Ship Compass, we help businesses navigate global shipping with smarter, faster, and more reliable 
-            logistics strategies. Whether you're moving aerospace components, sensitive pharmaceuticals, or high-
-            value goods — we connect you with vetted carriers and custom solutions tailored to your needs.
-          </p>
-          <p class="text-lg text-gray-700 mb-6">
-            Our team of logistics experts brings decades of industry experience to every shipment, ensuring that your cargo reaches its destination safely, on time, and within budget.
-          </p>
-          <a href="#contact" class="inline-block bg-brand-navy hover:bg-brand-navy-dark text-white font-bold py-3 px-8 rounded-md transition duration-300 transform hover:-translate-y-1">
-            Work With Us
-          </a>
-        </div>
-        <div class="md:w-1/2 animate-item">
-          <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Logistics Expert" class="rounded-lg shadow-xl">
-        </div>
+  <!-- CTA Section with Video Background -->
+  <section id="about" class="py-16 bg-gray-50 scroll-section relative overflow-hidden">
+    <!-- Video Background -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-brand-navy opacity-80 z-10"></div>
+      <video class="object-cover w-full h-full" autoplay loop muted playsinline>
+        <source src="media/videos/video_preview_h264.mp4" type="video/mp4">
+      </video>
+    </div>
+    
+    <div class="container mx-auto px-4 md:px-8 relative z-20">
+      <div class="max-w-3xl mx-auto text-center animate-item">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-8">Guiding Your Freight Forward</h2>
+        <p class="text-lg md:text-xl text-gray-100 mb-8 leading-relaxed">
+          At Ship Compass, we help businesses navigate global shipping with smarter, faster, and more reliable 
+          logistics strategies. Whether you're moving aerospace components, sensitive pharmaceuticals, or high-
+          value goods — we connect you with vetted carriers and custom solutions tailored to your needs.
+        </p>
+        <p class="text-lg md:text-xl text-gray-100 mb-10 leading-relaxed">
+          Our team of logistics experts brings decades of industry experience to every shipment, ensuring that your cargo reaches its destination safely, on time, and within budget.
+        </p>
+        <a href="#contact" class="inline-block bg-white hover:bg-gray-100 text-brand-navy font-bold py-4 px-10 rounded-md transition duration-300 transform hover:-translate-y-1 shadow-lg">
+          Work With Us
+        </a>
       </div>
     </div>
   </section>
