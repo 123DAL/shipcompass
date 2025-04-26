@@ -9,32 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // Only add event listener if we're on the homepage with the form
   if (form) {
     // Add event handler for form submission
-    form.addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent default form submission
-      
-      // Get form data
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const company = document.getElementById('company').value;
-      const message = document.getElementById('message').value;
-      
-      // Format subject and body for mailto
-      const subject = 'Ship Compass Consultation Request';
-      const body = `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\nMessage: ${message}`;
-      
-      // Create a hidden link element to trigger the mailto
-      const mailtoLink = document.createElement('a');
-      mailtoLink.style.display = 'none';
-      mailtoLink.href = `mailto:123dal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
-      // Append, click, and remove link element
-      document.body.appendChild(mailtoLink);
-      mailtoLink.click();
-      document.body.removeChild(mailtoLink);
-      
-      // Show thank you message, hide form
-      formContainer.classList.add('hidden');
-      thankYouMessage.classList.remove('hidden');
+    form.addEventListener('submit', function() {
+      // The form will naturally submit to the mailto action
+      // We just need to show the thank you message after a slight delay
+      setTimeout(function() {
+        formContainer.classList.add('hidden');
+        thankYouMessage.classList.remove('hidden');
+      }, 500);
     });
     
     // Add event listener for the "Send Another Request" button
