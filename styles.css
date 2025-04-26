@@ -24,6 +24,11 @@ body {
   height: auto;
 }
 
+/* Custom opacity class */
+.opacity-64 {
+  opacity: 0.64;
+}
+
 /* Video background styling */
 video {
   position: absolute;
