@@ -24,6 +24,24 @@ body {
   height: auto;
 }
 
+/* Scroll animations initial state */
+.scroll-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.4s ease-out, transform 0.6s ease-out;
+}
+
+/* Active animation classes added by GSAP */
+.animate-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Custom animation for hover effects */
 @keyframes float {
   0% {
@@ -45,6 +63,11 @@ button:hover {
 :focus {
   outline: 3px solid rgba(20, 57, 95, 0.3);
   outline-offset: 2px;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Media queries for responsive adjustments */
