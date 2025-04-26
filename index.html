@@ -296,38 +296,55 @@
         </div>
         
         <div class="bg-gray-50 p-8 md:p-10 rounded-xl shadow-md animate-item">
-          <form id="consultation-form" class="space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Form Section -->
+          <div id="form-container">
+            <form action="mailto:123dal@gmail.com" method="POST" enctype="text/plain" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="form-group">
+                  <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                  <input type="text" id="name" name="Name" placeholder="John Smith" required
+                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-navy focus:border-transparent">
+                </div>
+                <div class="form-group">
+                  <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                  <input type="email" id="email" name="Email" placeholder="john@company.com" required
+                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-navy focus:border-transparent">
+                </div>
+              </div>
+              
               <div class="form-group">
-                <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
-                <input type="text" id="name" name="name" placeholder="John Smith" required
+                <label for="company" class="block text-gray-700 font-medium mb-2">Company</label>
+                <input type="text" id="company" name="Company" placeholder="Your Company Name" 
                       class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-navy focus:border-transparent">
               </div>
+              
               <div class="form-group">
-                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="john@company.com" required
-                      class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-navy focus:border-transparent">
+                <label for="message" class="block text-gray-700 font-medium mb-2">Tell Us About Your Freight Needs</label>
+                <textarea id="message" name="Message" placeholder="Please describe your shipping requirements, cargo types, destinations, etc." required
+                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-navy focus:border-transparent min-h-[120px]"></textarea>
+              </div>
+              
+              <button type="submit" 
+                    class="w-full bg-brand-navy hover:bg-brand-navy-dark text-white font-bold py-4 px-4 rounded-md transition duration-300 ease-in-out flex items-center justify-center text-lg">
+                <span>Get Your Free Consultation</span>
+                <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </form>
+          </div>
+          
+          <!-- Thank You Message (Initially Hidden) -->
+          <div id="thank-you-message" class="text-center py-12 hidden">
+            <div class="mb-6">
+              <div class="mx-auto w-16 h-16 bg-green-500 rounded-full flex items-center justify-center">
+                <i class="fas fa-check text-white text-2xl"></i>
               </div>
             </div>
-            
-            <div class="form-group">
-              <label for="company" class="block text-gray-700 font-medium mb-2">Company</label>
-              <input type="text" id="company" name="company" placeholder="Your Company Name" 
-                    class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-navy focus:border-transparent">
-            </div>
-            
-            <div class="form-group">
-              <label for="message" class="block text-gray-700 font-medium mb-2">Tell Us About Your Freight Needs</label>
-              <textarea id="message" name="message" placeholder="Please describe your shipping requirements, cargo types, destinations, etc." required
-                      class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-navy focus:border-transparent min-h-[120px]"></textarea>
-            </div>
-            
-            <button type="submit" 
-                  class="w-full bg-brand-navy hover:bg-brand-navy-dark text-white font-bold py-4 px-4 rounded-md transition duration-300 ease-in-out flex items-center justify-center text-lg">
-              <span>Get Your Free Consultation</span>
-              <i class="fas fa-arrow-right ml-2"></i>
+            <h3 class="text-2xl font-bold text-brand-navy mb-4">Thank You!</h3>
+            <p class="text-gray-700 text-lg mb-8">We've received your consultation request and will be in touch shortly. Our team is looking forward to learning more about your shipping needs.</p>
+            <button id="send-another" class="bg-brand-navy hover:bg-brand-navy-dark text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out">
+              Send Another Request
             </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
