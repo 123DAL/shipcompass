@@ -6,6 +6,19 @@ document.addEventListener('DOMContentLoaded', function() {
   const thankYouMessage = document.getElementById('thank-you-message');
   const sendAnotherBtn = document.getElementById('send-another');
   
+  // Initialize Turnstile explicitly when it's loaded
+  if (document.getElementById('cf-turnstile-container')) {
+    // Check if turnstile is loaded
+    if (typeof turnstile !== 'undefined') {
+      renderTurnstile();
+    } else {
+      // If not loaded yet, wait for it
+      window.onloadTurnstileCallback = function() {
+        renderTurnstile();
+      };
+    }
+  }
+  
   // Only add event listener if we're on the homepage with the form
   if (form) {
     // We're using FormSubmit with a redirect to thanks.html now
@@ -33,15 +46,25 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Reset Turnstile widget
         if (typeof turnstile !== 'undefined') {
-          turnstile.reset();
+          turnstile.reset('turnstile-widget');
         }
       });
     }
   }
 });
 
-// Turnstile verification flag
+// Turnstile verification flag and widget ID
 let turnstileVerified = false;
+let turnstileWidgetId = null;
+
+// Function to render Turnstile
+function renderTurnstile() {
+  turnstileWidgetId = turnstile.render('#cf-turnstile-container', {
+    sitekey: '0x4AAAAAABUjyJZFsWJY_zNM',
+    callback: onTurnstileSuccess,
+    'refresh-expired': 'auto'
+  });
+}
 
 // Called when Turnstile verification is successful
 function onTurnstileSuccess(token) {
@@ -100,7 +123,7 @@ function submitForm(event) {
     // Reset Turnstile for next submission
     turnstileVerified = false;
     if (typeof turnstile !== 'undefined') {
-      turnstile.reset();
+      turnstile.reset(turnstileWidgetId);
     }
   })
   .catch(error => {
