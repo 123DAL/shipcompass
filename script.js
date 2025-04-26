@@ -23,4 +23,46 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   }
-}); 
+});
+
+// Function to handle form submission without page redirect
+function submitForm(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const formData = new FormData(form);
+  const formContainer = document.getElementById('form-container');
+  const thankYouMessage = document.getElementById('thank-you-message');
+  
+  // Show loading state if desired
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton.innerHTML;
+  submitButton.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+  submitButton.disabled = true;
+  
+  // Send form data to FormSubmit
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    // Reset button state
+    submitButton.innerHTML = originalButtonText;
+    submitButton.disabled = false;
+    
+    // Show success message
+    form.reset();
+    formContainer.classList.add('hidden');
+    thankYouMessage.classList.remove('hidden');
+  })
+  .catch(error => {
+    // Handle error if needed
+    console.error('Error submitting form:', error);
+    submitButton.innerHTML = originalButtonText;
+    submitButton.disabled = false;
+    alert('There was a problem submitting your form. Please try again.');
+  });
+} 
