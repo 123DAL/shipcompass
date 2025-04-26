@@ -43,23 +43,28 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="py-12 md:py-20 bg-gradient-to-br from-white to-gray-100 mt-16 scroll-section">
-    <div class="container mx-auto px-4 md:px-8">
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-10 md:mb-0 md:pr-12 animate-item">
-          <h1 class="text-4xl md:text-5xl font-bold text-brand-navy mb-6 leading-tight">Global Shipping, Simplified</h1>
-          <p class="text-xl text-gray-700 mb-8">Ship Compass streamlines your global logistics with expert guidance, trusted carrier networks, and intelligent solutions that adapt to your business needs.</p>
-          <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <a href="#contact" class="bg-brand-navy hover:bg-brand-navy-dark text-white text-center font-bold py-3 px-8 rounded-md transition duration-300 transform hover:-translate-y-1">
+  <section class="py-12 md:py-20 bg-gradient-to-br from-white to-gray-100 mt-16 scroll-section relative overflow-hidden">
+    <!-- Video Background -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-brand-navy opacity-64 z-10"></div>
+      <video class="object-cover w-full h-full" autoplay loop muted playsinline>
+        <source src="media/videos/freighter.mp4" type="video/mp4">
+      </video>
+    </div>
+    
+    <div class="container mx-auto px-4 md:px-8 relative z-20">
+      <div class="text-center max-w-4xl mx-auto">
+        <div class="animate-item">
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Global Shipping, Simplified</h1>
+          <p class="text-xl text-gray-100 mb-8">Ship Compass streamlines your global logistics with expert guidance, trusted carrier networks, and intelligent solutions that adapt to your business needs.</p>
+          <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+            <a href="#contact" class="bg-white hover:bg-gray-100 text-brand-navy text-center font-bold py-3 px-8 rounded-md transition duration-300 transform hover:-translate-y-1 shadow-lg">
               Get a Free Consultation
             </a>
-            <a href="#solutions" class="border-2 border-brand-navy text-brand-navy text-center font-bold py-3 px-8 rounded-md hover:bg-gray-100 transition duration-300">
+            <a href="#solutions" class="border-2 border-white text-white text-center font-bold py-3 px-8 rounded-md hover:bg-white hover:bg-opacity-10 transition duration-300">
               Explore Solutions
             </a>
           </div>
-        </div>
-        <div class="md:w-1/2 animate-item">
-          <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Global Shipping Network" class="rounded-lg shadow-xl">
         </div>
       </div>
     </div>
@@ -164,23 +169,86 @@
   <!-- Testimonial Section -->
   <section class="py-16 bg-white scroll-section">
     <div class="container mx-auto px-4 md:px-8">
-      <div class="bg-brand-navy text-white rounded-xl p-8 md:p-12 shadow-lg animate-item">
-        <div class="flex flex-col md:flex-row items-center">
-          <div class="md:w-3/4 mb-8 md:mb-0 md:pr-12">
-            <div class="text-4xl text-gray-300 mb-6">"</div>
-            <p class="text-xl md:text-2xl mb-6 leading-relaxed">Ship Compass transformed our global logistics operations. Their expertise helped us reduce transit times by 28% while maintaining perfect compliance with our industry's strict regulations.</p>
-            <div>
-              <p class="font-bold text-lg">Sarah Thompson</p>
-              <p class="text-gray-300">VP of Supply Chain, AeroDynamics Inc.</p>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-navy mb-6 text-center">What Our Clients Say</h2>
+        
+        <div class="grid grid-cols-1 gap-6">
+          <!-- Main Testimonial -->
+          <div class="bg-brand-navy text-white rounded-xl p-6 shadow-lg animate-item">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <div class="w-12 h-12 bg-brand-navy-light rounded-full flex items-center justify-center">
+                  <span class="text-xl font-bold">ST</span>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-center mb-2">
+                  <div class="flex space-x-1 mr-3">
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                  </div>
+                  <span class="text-sm text-gray-300">Verified Client</span>
+                </div>
+                <p class="text-lg mb-4 leading-relaxed">"Ship Compass transformed our global logistics operations. Their expertise helped us reduce transit times by 28% while maintaining perfect compliance with our industry's strict regulations."</p>
+                <div>
+                  <p class="font-bold">Sarah Thompson</p>
+                  <p class="text-sm text-gray-300">VP of Supply Chain, AeroDynamics Inc.</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="md:w-1/4 flex justify-center">
-            <div class="flex space-x-1">
-              <i class="fas fa-star text-yellow-400 text-2xl"></i>
-              <i class="fas fa-star text-yellow-400 text-2xl"></i>
-              <i class="fas fa-star text-yellow-400 text-2xl"></i>
-              <i class="fas fa-star text-yellow-400 text-2xl"></i>
-              <i class="fas fa-star text-yellow-400 text-2xl"></i>
+          
+          <!-- Additional Testimonials (Smaller) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Testimonial 2 -->
+            <div class="bg-gray-100 rounded-lg p-4 animate-item">
+              <div class="flex items-center mb-2">
+                <div class="flex space-x-1 mr-2">
+                  <i class="fas fa-star text-yellow-400 text-sm"></i>
+                  <i class="fas fa-star text-yellow-400 text-sm"></i>
+                  <i class="fas fa-star text-yellow-400 text-sm"></i>
+                  <i class="fas fa-star text-yellow-400 text-sm"></i>
+                  <i class="fas fa-star text-yellow-400 text-sm"></i>
+                </div>
+              </div>
+              <p class="text-gray-700 text-sm mb-3">"Their pharmaceutical shipping expertise saved us countless hours and ensured our temperature-sensitive products arrived in perfect condition."</p>
+              <p class="font-bold text-sm">Michael Chen</p>
+              <p class="text-xs text-gray-500">Logistics Manager, BioMed Solutions</p>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="bg-gray-100 rounded-lg p-4 animate-item">
+              <div class="flex items-center mb-2">
+                <div class="flex space-x-1 mr-2">
+                  <i class="fas fa-star text-yellow-400 text-sm"></i>
+                  <i class="fas fa-star text-yellow-400 text-sm"></i>
+                  <i class="fas fa-star text-yellow-400 text-sm"></i>
+                  <i class="fas fa-star text-yellow-400 text-sm"></i>
+                  <i class="fas fa-star text-yellow-400 text-sm"></i>
+                </div>
+              </div>
+              <p class="text-gray-700 text-sm mb-3">"We needed to ship priceless artwork internationally with zero margin for error. Ship Compass delivered flawlessly with their white glove service."</p>
+              <p class="font-bold text-sm">Eliza Montgomery</p>
+              <p class="text-xs text-gray-500">Curator, Metropolitan Art Foundation</p>
+            </div>
+          </div>
+          
+          <!-- Key Stats -->
+          <div class="grid grid-cols-3 gap-4 bg-gray-50 rounded-lg p-4 animate-item">
+            <div class="text-center">
+              <p class="text-3xl font-bold text-brand-navy">98%</p>
+              <p class="text-sm text-gray-600">On-Time Delivery</p>
+            </div>
+            <div class="text-center">
+              <p class="text-3xl font-bold text-brand-navy">23%</p>
+              <p class="text-sm text-gray-600">Average Cost Savings</p>
+            </div>
+            <div class="text-center">
+              <p class="text-3xl font-bold text-brand-navy">24/7</p>
+              <p class="text-sm text-gray-600">Support Available</p>
             </div>
           </div>
         </div>
@@ -192,7 +260,7 @@
   <section id="about" class="py-16 bg-gray-50 scroll-section relative overflow-hidden">
     <!-- Video Background -->
     <div class="absolute inset-0 z-0">
-      <div class="absolute inset-0 bg-brand-navy opacity-80 z-10"></div>
+      <div class="absolute inset-0 bg-brand-navy opacity-64 z-10"></div>
       <video class="object-cover w-full h-full" autoplay loop muted playsinline>
         <source src="media/videos/video_preview_h264.mp4" type="video/mp4">
       </video>
@@ -226,12 +294,7 @@
         </div>
         
         <div class="bg-gray-50 p-8 md:p-10 rounded-xl shadow-md animate-item">
-          <form id="consultation-form" action="https://formsubmit.co/123dal@gmail.com" method="POST" class="space-y-6">
-            <!-- FormSubmit configuration -->
-            <input type="hidden" name="_subject" value="New Consultation Request from Ship Compass">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://shipcompass.pages.dev/thanks.html">
-            
+          <form id="consultation-form" action="mailto:123dal@gmail.com" method="post" enctype="text/plain" class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="form-group">
                 <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
