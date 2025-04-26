@@ -9,44 +9,43 @@ document.addEventListener('DOMContentLoaded', function() {
   // Only add event listener if we're on the homepage with the form
   if (form) {
     // Add event handler for form submission
-    form.addEventListener('submit', function(event) {
-      // Prevent the default form action
-      event.preventDefault();
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission
       
-      // Show button loading state
-      const button = this.querySelector('button[type="submit"]');
-      const originalText = button.innerHTML;
-      button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
-      button.disabled = true;
+      // Get form data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const company = document.getElementById('company').value;
+      const message = document.getElementById('message').value;
       
-      // Simulate form processing (in a real app, you'd send this data to a server)
-      setTimeout(function() {
-        // Hide form, show thank you message
-        formContainer.classList.add('hidden');
-        thankYouMessage.classList.remove('hidden');
-        
-        // Reset form for future use
-        form.reset();
-        button.innerHTML = originalText;
-        button.disabled = false;
-        
-        // Scroll to thank you message
-        thankYouMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 1500); // Simulate processing time
+      // Format subject and body for mailto
+      const subject = 'Ship Compass Consultation Request';
+      const body = `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\nMessage: ${message}`;
+      
+      // Create a hidden link element to trigger the mailto
+      const mailtoLink = document.createElement('a');
+      mailtoLink.style.display = 'none';
+      mailtoLink.href = `mailto:123dal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Append, click, and remove link element
+      document.body.appendChild(mailtoLink);
+      mailtoLink.click();
+      document.body.removeChild(mailtoLink);
+      
+      // Show thank you message, hide form
+      formContainer.classList.add('hidden');
+      thankYouMessage.classList.remove('hidden');
     });
     
     // Add event listener for the "Send Another Request" button
     if (sendAnotherBtn) {
       sendAnotherBtn.addEventListener('click', function() {
+        // Reset form
+        form.reset();
+        
         // Hide thank you message, show form
         thankYouMessage.classList.add('hidden');
         formContainer.classList.remove('hidden');
-        
-        // Focus on first form field
-        const firstInput = form.querySelector('input');
-        if (firstInput) {
-          firstInput.focus();
-        }
       });
     }
   }
