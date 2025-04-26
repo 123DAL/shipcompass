@@ -32,8 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
           submitButton.classList.add('opacity-70', 'cursor-not-allowed');
         }
         
-        // Reset Turnstile widget
-        window.turnstile.reset();
+        // Reset Turnstile widget if it's been initialized
+        if (window.turnstile) {
+          try {
+            window.turnstile.reset();
+          } catch (e) {
+            console.log('Could not reset Turnstile widget');
+          }
+        }
       });
     }
   }
@@ -45,6 +51,7 @@ let turnstileToken = '';
 
 // Called when Turnstile verification is successful
 function onTurnstileSuccess(token) {
+  console.log('Turnstile verification successful');
   turnstileVerified = true;
   turnstileToken = token;
   
@@ -103,7 +110,13 @@ function submitForm(event) {
     // Reset Turnstile for next submission
     turnstileVerified = false;
     turnstileToken = '';
-    window.turnstile.reset();
+    if (window.turnstile) {
+      try {
+        window.turnstile.reset();
+      } catch (e) {
+        console.log('Could not reset Turnstile widget');
+      }
+    }
   })
   .catch(error => {
     // Handle error if needed
