@@ -20,14 +20,51 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hide thank you message, show form
         thankYouMessage.classList.add('hidden');
         formContainer.classList.remove('hidden');
+        
+        // Reset Turnstile
+        turnstileVerified = false;
+        turnstileToken = '';
+        
+        // Reset submit button to disabled state
+        const submitButton = document.getElementById('submit-button');
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.classList.add('opacity-70', 'cursor-not-allowed');
+        }
+        
+        // Reset Turnstile widget
+        window.turnstile.reset();
       });
     }
   }
 });
 
+// Turnstile variables
+let turnstileVerified = false;
+let turnstileToken = '';
+
+// Called when Turnstile verification is successful
+function onTurnstileSuccess(token) {
+  turnstileVerified = true;
+  turnstileToken = token;
+  
+  // Enable submit button
+  const submitButton = document.getElementById('submit-button');
+  if (submitButton) {
+    submitButton.disabled = false;
+    submitButton.classList.remove('opacity-70', 'cursor-not-allowed');
+  }
+}
+
 // Function to handle form submission without page redirect
 function submitForm(event) {
   event.preventDefault();
+  
+  // Verify Turnstile is completed
+  if (!turnstileVerified) {
+    alert('Please complete the security verification first.');
+    return;
+  }
   
   const form = event.target;
   const formData = new FormData(form);
@@ -39,6 +76,11 @@ function submitForm(event) {
   const originalButtonText = submitButton.innerHTML;
   submitButton.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
   submitButton.disabled = true;
+  
+  // Add Turnstile token to bypass FormSubmit's captcha
+  formData.append('cf-turnstile-response', turnstileToken);
+  // Disable FormSubmit's captcha since we're using Turnstile
+  formData.set('_captcha', 'false');
   
   // Send form data to FormSubmit
   fetch(form.action, {
@@ -57,6 +99,11 @@ function submitForm(event) {
     form.reset();
     formContainer.classList.add('hidden');
     thankYouMessage.classList.remove('hidden');
+    
+    // Reset Turnstile for next submission
+    turnstileVerified = false;
+    turnstileToken = '';
+    window.turnstile.reset();
   })
   .catch(error => {
     // Handle error if needed
