@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ship Compass | Your Global Shipping Partner</title>
   <meta name="description" content="Ship Compass helps businesses navigate global shipping with smarter, faster, and more reliable logistics strategies.">
+  <!-- Cloudflare Turnstile for CAPTCHA -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -331,8 +333,11 @@
                         class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-navy focus:border-transparent min-h-[120px]"></textarea>
               </div>
               
-              <button type="submit" 
-                    class="w-full bg-brand-navy hover:bg-brand-navy-dark text-white font-bold py-4 px-4 rounded-md transition duration-300 ease-in-out flex items-center justify-center text-lg">
+              <!-- Cloudflare Turnstile CAPTCHA -->
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAABUjyJZFsWJY_zNM" data-callback="onTurnstileSuccess"></div>
+              
+              <button type="submit" id="submit-button" disabled
+                    class="w-full bg-brand-navy hover:bg-brand-navy-dark text-white font-bold py-4 px-4 rounded-md transition duration-300 ease-in-out flex items-center justify-center text-lg opacity-70 cursor-not-allowed">
                 <span>Get Your Free Consultation</span>
                 <i class="fas fa-arrow-right ml-2"></i>
               </button>
