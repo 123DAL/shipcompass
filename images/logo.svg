@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="400" height="200">
+  <style>
+    .logo-text { font-family: Arial, sans-serif; font-weight: bold; fill: #14395f; }
+    .tagline { font-family: Arial, sans-serif; fill: #14395f; }
+  </style>
+  <g>
+    <!-- Circle with compass -->
+    <circle cx="200" cy="200" r="120" fill="white" stroke="#14395f" stroke-width="12"/>
+    <!-- Compass arrow -->
+    <path d="M200,120 L170,240 L200,220 L230,240 Z" fill="#14395f"/>
+    <!-- Water lines -->
+    <path d="M120,220 L280,220" stroke="#14395f" stroke-width="12" stroke-linecap="round"/>
+    <path d="M140,250 L260,250" stroke="#14395f" stroke-width="12" stroke-linecap="round"/>
+    <path d="M160,280 L240,280" stroke="#14395f" stroke-width="12" stroke-linecap="round"/>
+    
+    <!-- Text -->
+    <text x="350" y="180" class="logo-text" font-size="100">SHIP</text>
+    <text x="350" y="280" class="logo-text" font-size="100">COMPASS</text>
+    <text x="130" y="360" class="tagline" font-size="50">Your Global Shipping Partner</text>
+  </g>
+</svg> 
