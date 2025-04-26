@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Reset Turnstile
         turnstileVerified = false;
-        turnstileToken = '';
         
         // Reset submit button to disabled state
         const submitButton = document.getElementById('submit-button');
@@ -32,28 +31,21 @@ document.addEventListener('DOMContentLoaded', function() {
           submitButton.classList.add('opacity-70', 'cursor-not-allowed');
         }
         
-        // Reset Turnstile widget if it's been initialized
-        if (window.turnstile) {
-          try {
-            window.turnstile.reset();
-          } catch (e) {
-            console.log('Could not reset Turnstile widget');
-          }
+        // Reset Turnstile widget
+        if (typeof turnstile !== 'undefined') {
+          turnstile.reset();
         }
       });
     }
   }
 });
 
-// Turnstile variables
+// Turnstile verification flag
 let turnstileVerified = false;
-let turnstileToken = '';
 
 // Called when Turnstile verification is successful
 function onTurnstileSuccess(token) {
-  console.log('Turnstile verification successful');
   turnstileVerified = true;
-  turnstileToken = token;
   
   // Enable submit button
   const submitButton = document.getElementById('submit-button');
@@ -78,14 +70,12 @@ function submitForm(event) {
   const formContainer = document.getElementById('form-container');
   const thankYouMessage = document.getElementById('thank-you-message');
   
-  // Show loading state if desired
+  // Show loading state
   const submitButton = form.querySelector('button[type="submit"]');
   const originalButtonText = submitButton.innerHTML;
   submitButton.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
   submitButton.disabled = true;
   
-  // Add Turnstile token to bypass FormSubmit's captcha
-  formData.append('cf-turnstile-response', turnstileToken);
   // Disable FormSubmit's captcha since we're using Turnstile
   formData.set('_captcha', 'false');
   
@@ -109,13 +99,8 @@ function submitForm(event) {
     
     // Reset Turnstile for next submission
     turnstileVerified = false;
-    turnstileToken = '';
-    if (window.turnstile) {
-      try {
-        window.turnstile.reset();
-      } catch (e) {
-        console.log('Could not reset Turnstile widget');
-      }
+    if (typeof turnstile !== 'undefined') {
+      turnstile.reset();
     }
   })
   .catch(error => {
